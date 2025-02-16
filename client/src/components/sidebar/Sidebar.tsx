@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import { cn } from "../../utils/utils";
 import { HomeIcon, PanelLeft, Database } from "lucide-react";
 import { ScrollArea } from "../scrollarea";
@@ -43,7 +43,7 @@ export const Sidebar = () => {
       <div
         className={cn(
           "relative duration-300 transition-[left,right,width] ease-linear",
-          "w-[16rem] duration-300 transition-all border-primary h-svh border-r fixed",
+          "w-[16rem] duration-300 transition-all  h-svh border-r fixed",
           "group-data-[state=collapsed]:w-[3rem] group-data-[state=expanded]:p-2"
         )}
       >
