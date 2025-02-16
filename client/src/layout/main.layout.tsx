@@ -1,13 +1,15 @@
-import { FC, ReactNode } from "react";
 import SidebarContextProvider from "../components/sidebar/sidebar_context";
-import { Sidebar } from "lucide-react";
+import Router from "../routes";
+import { Sidebar } from "../components/sidebar/Sidebar";
 
-const MainLayout: FC<{ children: ReactNode }> = ({ children }) => {
+const MainLayout = () => {
   return (
     <div>
       <SidebarContextProvider>
         <Sidebar />
-        <main>{children}</main>
+        <main>
+          <Router />
+        </main>
       </SidebarContextProvider>
     </div>
   );
