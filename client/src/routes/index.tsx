@@ -1,16 +1,27 @@
 import React, { useEffect } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import PageNotFound from "../pages/PageNotFound/PageNotFound";
+import { useSidebar } from "../components/sidebar/sidebar_context";
+
+const hiddenSidebarPaths = ["/login", "/register", "/forgot-password"];
 
 const CustomRouter = () => {
-  useEffect(() => {}, []);
+  const location = useLocation();
+  const { handleHideShowSidebar } = useSidebar();
+
+  useEffect(() => {
+    const shouldHideSidebar = hiddenSidebarPaths.includes(location.pathname);
+    handleHideShowSidebar(!shouldHideSidebar);
+  }, [location.pathname]);
 
   return (
-    <Routes>
-      <Route path="/" element={<></>} />
-      <Route path="/login" element={<></>} />
-      <Route path="*" element={<PageNotFound />} />
-    </Routes>
+    <div>
+      <Routes>
+        <Route path="/" element={<></>} />
+        <Route path="/login" element={<></>} />
+        <Route path="*" element={<PageNotFound />} />
+      </Routes>
+    </div>
   );
 };
 

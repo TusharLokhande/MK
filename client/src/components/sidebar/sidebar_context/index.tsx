@@ -7,6 +7,7 @@ interface ISidebarContext {
   toggleSidebar: () => void;
   handleActive: (value: string) => void;
   showSidebar: boolean;
+  handleHideShowSidebar(value: boolean): void;
 }
 
 const SIDEBAR_KEYBOARD_SHORTCUT = "b";
@@ -41,6 +42,10 @@ const SidebarContextProvider: React.FC<{ children: ReactNode }> = ({
     [setActive]
   );
 
+  const handleHideShowSidebar = (value: boolean) => {
+    setShowSideBar(value);
+  };
+
   const defaultValue = React.useMemo<ISidebarContext>(
     () => ({
       open,
@@ -48,8 +53,10 @@ const SidebarContextProvider: React.FC<{ children: ReactNode }> = ({
       active,
       toggleSidebar,
       handleActive,
+      handleHideShowSidebar,
+      showSidebar,
     }),
-    [open, active, toggleSidebar]
+    [open, showSidebar, active, toggleSidebar, handleHideShowSidebar]
   );
 
   React.useEffect(() => {

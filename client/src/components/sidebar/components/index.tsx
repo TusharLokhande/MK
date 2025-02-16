@@ -27,7 +27,6 @@ export const SidebarMenu: FC<DefaultProps> = ({ className = "", ...props }) => {
 
 export const SidebarMenuItem: FC<{
   className?: string;
-  Active: boolean;
   menuItem: IMenuOption | null;
   children: ReactNode;
 }> = ({ children, className = "", menuItem = null, ...props }) => {

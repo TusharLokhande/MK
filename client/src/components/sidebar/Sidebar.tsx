@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, Fragment } from "react";
 import { cn } from "../../utils/utils";
 import { HomeIcon, PanelLeft, Database } from "lucide-react";
 import { ScrollArea } from "../scrollarea";
@@ -9,6 +9,7 @@ import {
 } from "./components";
 import { useSidebar } from "./sidebar_context";
 import { ISidebarGroup } from "./types";
+import uuid from "react-uuid";
 
 const data: ISidebarGroup[] = [
   {
@@ -36,10 +37,14 @@ const data: ISidebarGroup[] = [
 export const Sidebar = () => {
   // const [open, setOpen] = useState(true);
 
-  const { open, toggleSidebar } = useSidebar();
+  const { open, toggleSidebar, showSidebar } = useSidebar();
 
   return (
-    <div className="group" data-state={open ? "expanded" : "collapsed"}>
+    <div
+      className="group"
+      data-state={open ? "expanded" : "collapsed"}
+      hidden={!showSidebar}
+    >
       <div
         className={cn(
           "relative duration-300 transition-[left,right,width] ease-linear",
@@ -69,8 +74,8 @@ export const Sidebar = () => {
         <ScrollArea className="h-[80%]">
           {/* <SidebarGroup /> */}
 
-          {data.map((i, j) => (
-            <SidebarGroup key={`group-${j}`} data={i} />
+          {data.map((i) => (
+            <SidebarGroup key={`group-${uuid()}`} data={i} />
           ))}
         </ScrollArea>
 
@@ -102,9 +107,8 @@ const SidebarGroup: FC<{ data: ISidebarGroup }> = ({ data }) => {
       <SidebarGroupContent>
         <SidebarMenu>
           {data.menuItems?.map((menuItem) => (
-            <>
+            <Fragment key={uuid()}>
               <SidebarMenuItem
-                Active={true}
                 className="flex items-center justify-between"
                 menuItem={menuItem}
               >
@@ -115,7 +119,7 @@ const SidebarGroup: FC<{ data: ISidebarGroup }> = ({ data }) => {
                   </span>
                 </a>
               </SidebarMenuItem>
-            </>
+            </Fragment>
           ))}
         </SidebarMenu>
       </SidebarGroupContent>
