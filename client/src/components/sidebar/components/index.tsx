@@ -1,4 +1,4 @@
-import React, { FC, ReactNode, useEffect, useMemo, useState } from "react";
+import React, { FC, ReactNode, useMemo, useState } from "react";
 import { cn } from "../../../utils/utils";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { IMenuOption } from "../types";
@@ -58,8 +58,8 @@ export const SidebarMenuItem: FC<{
         "group-data-[state=collapsed]:p-1 border-none",
         `${
           menuItem?.systemName === active
-            ? "bg-indigo-400 text-white"
-            : "hover:bg-indigo-300 hover:text-white"
+            ? "bg-primary text-white"
+            : "hover:bg-primary-soft bg-blend-soft-light hover:text-white"
         }`,
         className
       )}

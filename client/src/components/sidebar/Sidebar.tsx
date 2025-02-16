@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 import { cn } from "../../utils/utils";
 import { HomeIcon, PanelLeft, Database } from "lucide-react";
 import { ScrollArea } from "../scrollarea";

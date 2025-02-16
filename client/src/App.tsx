@@ -1,15 +1,7 @@
-import { Sidebar } from "./components/sidebar/Sidebar";
-import SidebarContextProvider from "./components/sidebar/sidebar_context";
+import MainLayout from "./layout/main.layout";
 
 function App() {
-  return (
-    <SidebarContextProvider>
-      <Sidebar />
-      <main className="">
-        <div className="h-[200vh]" />
-      </main>
-    </SidebarContextProvider>
-  );
+  return <MainLayout />;
 }
 
 export default App;
