@@ -49,7 +49,7 @@ export const Sidebar = () => {
         className={cn(
           "relative duration-300 transition-[left,right,width] ease-linear",
           "w-[16rem] duration-300 transition-all  h-svh border-r fixed",
-          "group-data-[state=collapsed]:w-[3rem] group-data-[state=expanded]:p-2"
+          "group-data-[state=collapsed]:w-[var(--sidebar-width-icon)] group-data-[state=expanded]:p-2"
         )}
       >
         {/* Header  */}
@@ -64,7 +64,7 @@ export const Sidebar = () => {
             <span className="brand_name text-xl">Learn's Cafe</span>
           </div>
           <div className="flex items-center">
-            <PanelLeft className="text-slate-400" onClick={toggleSidebar} />
+            {/* <PanelLeft className="text-slate-400" onClick={toggleSidebar} /> */}
           </div>
         </div>
 
@@ -81,7 +81,7 @@ export const Sidebar = () => {
 
         <Seprator />
         {/* Footer  */}
-        <div className="h-[100px] fixed">Footer</div>
+        <div className={cn("h-[100px]", open ? "fixed" : "hidden")}>Footer</div>
       </div>
     </div>
   );
